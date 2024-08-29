@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Card{
+    box-shadow: 10px 10px 4px 0 #000000 ;
+}
