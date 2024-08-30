@@ -1,38 +1,59 @@
-import { useEffect } from 'react'
-import './App.css'
-import { useState } from 'react'
-import Location from './Location'
-import CurrentWeather from './CurrentWeather'
-import DailyForecast from './DailyForecast'
-import HourlyForecast from './HourlyForecast'
-import searchIcon from './assets/WeatherWhiteIcons/search.png'
+import { useEffect } from "react";
+import "./App.css";
+import { useState } from "react";
+import Header from "./components/Header";
+import { AppContext, ForecastContext } from "./Context/Context";
+import CurrentWeatherContainer from "./CurrentWeatherContainer";
+import ForecastContainer from "./ForecastContainer";
 
-const API_KEY ='c39dcb6fbf59d39634cb90bb49d9e560'
+
 function App() {
-    const [search, setSearch] = useState('')
-
-    const handleSearch = () => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search},&appid=${API_KEY}`).then((res) => {
-            return res.json()
-        }).then(data => {
-            console.log(data)
+  const [search, setSearch] = useState("new york");
+  const [data, setWeatherData] = useState();
+  const [forecastData, setForecastData] = useState();
+  const API_KEY = "c39dcb6fbf59d39634cb90bb49d9e560";
+  useEffect(() => {
+    fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${search},&appid=${API_KEY}&units=metric`
+      )
+        .then((res) => {
+          return res.json();
         })
-    }
-
+        .then((data) => {
+          setWeatherData(data);
+        });
+  
+      try {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${API_KEY}&units=metric`
+        )
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            setForecastData(data);
+            console.log(data);
+          });
+      } catch (e) {
+        console.log(e);
+      }
+  
+  },[])
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    console.log(search)
+  }
   return (
-    <div className='text-center text-white bg-primary py-8 px-[42px]'>
-        <div className='flex justify-center items-center'>
-            <div onClick={handleSearch} className='w-4'>
-                <img src={searchIcon} alt="searchIcon" />
-            </div>
-            <input className='bg-transparent shadow-sm h-8' type='text' placeholder='Search for your preferred city...' onChange={(e) => setSearch(e.target.value)} />
-        </div>
-        <Location/>
-        <CurrentWeather/>
-        <DailyForecast/>
-        <HourlyForecast/>
-    </div>
-  )
+    <AppContext.Provider value={data}>
+      <div className="text-center text-white py-8 px-[20px] md:px-5">
+        <Header onClick={handleSearch} onChange={(e) => setSearch(e.target.value) }/>
+        <ForecastContext.Provider value={forecastData}>
+          <CurrentWeatherContainer />
+          <ForecastContainer />
+        </ForecastContext.Provider>
+      </div>
+    </AppContext.Provider>
+  );
 }
 
-export default App
+export default App;
