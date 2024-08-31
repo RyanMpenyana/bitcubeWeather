@@ -4,7 +4,7 @@ import HourlyForecast from './HourlyForecast'
 
 const ForecastContainer = () => {
   return (
-    <div className="md:flex md:justify-center md:gap-6 ">
+    <div className="flex flex-col lg:justify-center lg:flex-row xl:gap-[61px]">
     <DailyForecast />
     <HourlyForecast />
   </div>

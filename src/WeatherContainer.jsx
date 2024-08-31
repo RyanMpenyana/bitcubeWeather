@@ -3,7 +3,7 @@ import Location from './Location'
 import CurrentWeather from './CurrentWeather'
 import { useContext } from 'react'
 import { AppContext , ForecastContext} from './Context/Context'
-const CurrentWeatherContainer = () => {
+const WeatherContainer = () => {
     const data = useContext(AppContext)
    
     const DateFormatter = (timeStamp) => {
@@ -19,7 +19,7 @@ const CurrentWeatherContainer = () => {
         return time;
       };
   return (
-    <div className="md:flex md:justify-center md:gap-6">
+    <div className="lg:flex xl:flex lg:justify-center xl:gap-[55px]">
     <Location location={data && data.name} time={DateFormatter()} />
     <CurrentWeather
       temperature={data && parseInt(data.main.temp)}
@@ -32,4 +32,4 @@ const CurrentWeatherContainer = () => {
   )
 }
 
-export default CurrentWeatherContainer;
+export default WeatherContainer;
