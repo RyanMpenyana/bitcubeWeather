@@ -8,7 +8,10 @@
 }
 
 body{
-    height: 100vh;
-    background-image: linear-gradient(to left top ,rgba(0, 0, 0, 0.979),rgba(27, 27, 27, 0.849) , rgba(27, 27, 27, 0.849)  ) ;
     color: white;
+    background-image: linear-gradient(to left top ,rgba(0, 0, 0, 0.979),rgba(27, 27, 27, 0.849) , rgba(27, 27, 27, 0.849)  ) ;
+}
+.App{
+    margin: 0 auto;
+    max-width: 1512px;
 }
