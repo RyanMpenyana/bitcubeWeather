@@ -5,56 +5,56 @@ import Header from "./components/Header";
 import { AppContext, ForecastContext } from "./Context/Context";
 import WeatherContainer from "./WeatherContainer";
 import ForecastContainer from "./ForecastContainer";
-
+export const API_KEY = "c39dcb6fbf59d39634cb90bb49d9e560";
 
 function App() {
-  const [search, setSearch] = useState("Kirkuk");
+  const [search, setSearch] = useState("Cape Town");
   const [data, setWeatherData] = useState();
   const [forecastData, setForecastData] = useState();
-
-  const API_KEY = "c39dcb6fbf59d39634cb90bb49d9e560";
-
+  const [location, setLocation] = useState();       
+  
+  const handleSearch = async () => {
+    //geolocation data
+    try{
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search},&limit=5&appid=${API_KEY}`)
+        const data = await response.json()
+        const results = data.filter((item, index) => console.log(item))
+        setLocation(results)
+        console.log(location)
+    }catch(err){
+        console.log(err)
+    }
+    //current weather Data
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`)
+        const data = await response.json()
+        setWeatherData(data)
+        } catch(e){
+            console.log(e)
+        }       
+  
+    //Forecast data
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${API_KEY}&units=metric`)
+      const data = await response.json()
+      setForecastData(data)
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
-       try{
-        fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${search},&appid=${API_KEY}&units=metric`
-          )
-            .then((res) => {
-              return res.json();
-            })
-            .then((data) => {
-              setWeatherData(data);
-            });
-       }catch(err){
-            console.log(err)
-       }
-      
-          try {
-            fetch(
-              `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${API_KEY}&units=metric`
-            )
-              .then((res) => {
-                return res.json();
-              })
-              .then((data) => {
-                setForecastData(data);
-                console.log(data);
-              });
-          } catch (e) {
-            console.log(e);
-          }
+    handleSearch();
+  }, []);
 
-  },[])
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    console.log(search)
-  }
   return (
     <AppContext.Provider value={data}>
-      <div className="App text-center text-white py-16 px-[20px] xl:px-5">
-        <Header onClick={handleSearch} onChange={(e) => handleSearch(e)}/>
+        <Header
+          onClick={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
+          options={location && location}
+        />
+      <div className="App text-center  text-white pb-16 h-full  px-[20px] xl:px-5">
         <ForecastContext.Provider value={forecastData}>
           <WeatherContainer />
           <ForecastContainer />

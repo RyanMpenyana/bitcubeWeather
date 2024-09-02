@@ -17,6 +17,9 @@ export default {
             'primary': '#444444',
             'dark' : '#373636',
             'light' : '#4CBB17',
+        },
+        backgroundImage:{
+            // 'dark' : 'linear-gradient(to left top ,rgba(0, 0, 0, 0.979),rgba(27, 27, 27, 0.849) , rgba(27, 27, 27, 0.849)  )'
         }
     },
   },
