@@ -10,6 +10,9 @@
 body{
     color: white;
     background-image: linear-gradient(to left top ,rgba(0, 0, 0, 0.979),rgba(27, 27, 27, 0.849) , rgba(27, 27, 27, 0.849)  ) ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
 }
 .App{
     margin: 0 auto;

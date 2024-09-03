@@ -16,7 +16,7 @@ function App() {
   const handleSearch = async () => {
     //geolocation data
     try{
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search},&limit=5&appid=${API_KEY}`)
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search},&limit=5&appid=${API_KEY}&units=metric`)
         const data = await response.json()
         const results = data.filter((item, index) => console.log(item))
         setLocation(results)
