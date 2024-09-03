@@ -2,20 +2,15 @@ import React from 'react'
 import Location from './Location'
 import CurrentWeather from './CurrentWeather'
 import { useContext } from 'react'
-import { AppContext , ForecastContext} from './Context/Context'
+import { AppContext , ForecastContext} from '../Context/Context'
 const WeatherContainer = () => {
     const data = useContext(AppContext)
    
-    const DateFormatter = (timeStamp) => {
+    const DateFormatter = () => {
         const date = new Date();
         const Hours = date.getHours().toString().padStart(2, "0");
         const minutes = date.getMinutes().toString().padStart(2, "0");
-        const fulldate = date.getFullYear();
         const time = `${Hours}:${minutes}`;
-        
-        // const timeSt = date.toLocaleTimeString()
-        
-        
         return time;
       };
   return (
