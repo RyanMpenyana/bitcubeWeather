@@ -33,7 +33,15 @@ const HourlyForecast = () => {
                 } xl:gap-1 xl:rounded-[40px] rounded-3xl py-2 xl:py-5 xl:w-32 xl:h-[270px]`}
               >
                 <h3 className="xl:font-bold xl:text-2xl lg:text-lg font-bold leading-9">
-                  {new Date(item.dt_txt).toLocaleTimeString([],{hour: '2-digit', minute:'2-digit', hour12:false} ).split(" ")[0]}
+                  {
+                    new Date(item.dt_txt)
+                      .toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: false,
+                      })
+                      .split(" ")[0]
+                  }
                 </h3>
                 <div className="xl:h-[111px]">
                   <img
