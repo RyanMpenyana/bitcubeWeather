@@ -30,7 +30,7 @@ const CurrentWeather = ({ temperature, feelsLike, weatherDescription }) => {
                   isDarkMode
                     ? "from-black to-white "
                     : "from-[rgba(255,255,255)] to-red "
-                } bg-clip-text text-transparent lg:h-28`}
+                } bg-clip-text text-transparent h-max xl:h-24`}
               >
                 <h1 className="font-bold text-[40px] xl:text-[80px]">
                   {temperature}
@@ -81,7 +81,7 @@ const CurrentWeather = ({ temperature, feelsLike, weatherDescription }) => {
                 <img className="h-full" src={humidityIcon} alt="humidIcon" />
               </div>
               <h4 className="font-semibold xl:text-xl">
-                {data && data.main.humidity}
+                {data && data.main.humidity}%
               </h4>
               <p>Humidity</p>
             </div>
@@ -90,7 +90,7 @@ const CurrentWeather = ({ temperature, feelsLike, weatherDescription }) => {
                 <img src={windIcon} alt="windIcon" />
               </div>
               <h4 className="font-semibold xl:text-xl">
-                {forecastData && forecastData.list[0].wind.speed}
+                {forecastData && parseInt(forecastData.list[0].wind.speed)}km/h
               </h4>
               <p>Wind Speed</p>
             </div>
@@ -99,7 +99,7 @@ const CurrentWeather = ({ temperature, feelsLike, weatherDescription }) => {
                 <img src={pressureIcon} alt="pressureIcon" />
               </div>
               <h4 className="font-semibold xl:text-xl">
-                {data && data.main.pressure}
+                {data && data.main.pressure}hPa
               </h4>
               <p>Pressure</p>
             </div>

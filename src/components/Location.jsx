@@ -1,6 +1,6 @@
 import React from "react";
 
-const Location = ({ location , time, date = "Thursday, 31 Aug" }) => {
+const Location = ({ location, time, date = "Thursday, 31 Aug" }) => {
   return (
     <div className="font-poppins shadow-md mb-7 rounded-[30px] pt-[30px] pb-[25px] flex justify-center items-center lg:w-[410px] xl:w-[510px] xl:pt-[53px] xl:pb-[50px]">
       <div className="location">
