@@ -50,7 +50,7 @@ const CurrentWeather = ({temperature, feelsLike, sunsetTime, weatherDescription 
              </div>
         </div>
         <div className='mb-6 xl:w-[270px] flex flex-col justify-center'>
-            <div className='w-52 lg:w-48 xl:w-full'>
+            <div className='w-52 flex justify-center lg:w-48 xl:w-full'>
                 <img src={`https://openweathermap.org/img/wn/${data &&  data.weather[0].icon}@4x.png`} alt="weatherIcon" />       
             </div>
             <p className='xl:text-[32px] xl:leading-[48px] text-3xl font-semibold'>{weatherDescription}</p>
