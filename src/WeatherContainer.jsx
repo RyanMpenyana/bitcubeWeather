@@ -19,7 +19,7 @@ const WeatherContainer = () => {
         return time;
       };
   return (
-    <div className="lg:flex xl:flex lg:justify-center xl:gap-[55px]">
+    <div className="lg:flex mb-6 xl:flex lg:justify-center xl:gap-[55px]">
     <Location location={data && data.name} time={DateFormatter()} />
     <CurrentWeather
       temperature={data && parseInt(data.main.temp)}
