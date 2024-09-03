@@ -7,17 +7,18 @@
     font-family: 'poppins', 'sans-serif';
 }
 
-#root{
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-}
-.App{
-    margin: 0 auto;
-    max-width: 1512px;
-}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .App {
+    min-height: 100vh;
+  }
 
-
+.dark{
+    background-image: linear-gradient(to left top, rgba(255, 255, 255, 1) , rgba(70, 97, 115, 0) ) !important;
+}
 
 /* The switch - the box around the slider */
 .switch {
@@ -69,8 +70,6 @@
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(70px);
-    -ms-transform: translateX(100px);
     transform: translateX(50px);
   }
   
@@ -81,4 +80,20 @@
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  @media screen and (max-width:640px) {
+    .switch{
+        width: 50px;
+        height: 30px;
+    }
+    input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+      .slider:before {
+        height: 20px;
+        width: 20px;
+        left: 5px;
+        bottom: 4px;
+      }
   }
