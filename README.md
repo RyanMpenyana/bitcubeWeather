@@ -7,7 +7,7 @@ Features :
     -Weather data is refreshed with new data every 5 minutes, this was implemented using a combination of setInterval and browser's localStorage.
     -Users can toggle between light and dark modes.
 
-instructions:
+Setup:
 
 clone the repository to your local environment, using the command below:
 
