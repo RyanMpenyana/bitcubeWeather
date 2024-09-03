@@ -19,16 +19,16 @@ const DailyForecast = ({item}) => {
         }
     }
   return (
-    <div className='flex flex-col px-6 py-4 mb-7 items-center  rounded-[30px] shadow-md lg:w-2/5  xl:w-[414px] xl:py-2 lg:h-[296px] xl:h-[366px]'>
+    <div className='flex flex-col px-6 py-4 mb-7 items-center  rounded-[30px] shadow-md lg:w-2/5  xl:w-[414px] xl:py-8 lg:h-[296px] xl:h-[366px]'>
         <h2 className='font-bold lg:text-xl xl:text-[32px] '>5 Days Forecast:</h2>
        <div className='lg:flex  lg:gap-4 xl:gap-0 lg:flex-col justify-center'>
 
             {
                 dailyWeatherData.length ? 
-                    dailyWeatherData.map(item => {
-                        return (<div className='flex items-center xl:justify-between xl:w-[370px] '>
+                    dailyWeatherData.map((item, index) => {
+                        return (<div key={index} className='flex items-center xl:justify-between xl:w-[370px] '>
                             <img className=' lg:w-8 xl:w-[60px]'src={`https://openweathermap.org/img/wn/${item &&  item.weather[0].icon}@2x.png`} alt="" />
-                            <p className='text-2xl font-semibold'>{parseInt(item.main.temp)}°C</p>
+                            <p className='xl:text-2xl font-semibold'>{parseInt(item.main.temp)}°C</p>
                             <div className='w-[163px]'>
                                 <p>{new Date(item.dt_txt).toDateString()}</p>
                             </div>
