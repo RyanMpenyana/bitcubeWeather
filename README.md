@@ -2,7 +2,8 @@
 
 This file provides a minimal setup to get Bit Weather running on your local machine.
 
-Features :
+Features:
+
     -The application uses the openweather api to fetch weather data for a given location.
     -Weather data is refreshed with new data every 5 minutes, this was implemented using a combination of setInterval and browser's localStorage.
     -Users can toggle between light and dark modes.
