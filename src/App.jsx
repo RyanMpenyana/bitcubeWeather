@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { useState } from "react";
 import Header from "./components/Header";
 import { AppContext, ForecastContext, ThemeContext } from "./Context/Context";
 import WeatherContainer from "./components/WeatherContainer";
@@ -41,6 +40,8 @@ function App() {
       let data = await response.json()
       if(data.cod != '404') {
         setWeatherData(data)
+      } else {
+        setErrorMessage('City not found')
       }
     } catch (e) {
       console.log(e)
@@ -61,6 +62,8 @@ function App() {
       //handling if place not found;
       if(data.cod != '404') {
         setForecastData(data)
+      } else {
+        setErrorMessage('City not found')
       }
     } catch (e) {
       console.log(e);
@@ -79,7 +82,7 @@ function App() {
     getCurrentWeather();
     handleSearch();
     loadDefaultTheme();
-    
+    // Refreshing weather data every 5 minutes
     let currentWeatherInterval = setInterval(() => getCurrentWeather(localStorage.getItem("currentLocation")), MSRefreshTime);
     let forecastWeatherInterval = setInterval(() => getForecastWeatherData(localStorage.getItem("currentLocation")), MSRefreshTime);
 
